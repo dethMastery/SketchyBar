@@ -28,7 +28,7 @@ sketchybar --bar height=40 \
 sketchybar -m --bar blur_radius=50 \
                     height=40 \
               --add item apple.logo left \
-              --set apple.logo icon=〄 \
+              --set apple.logo icon=✨ \
                                icon.font="Hack Nerd Font regular:Bold:16.0" \
                                label.drawing=off \
                                click_script="sketchybar -m --set \$NAME popup.drawing=toggle" \
@@ -98,6 +98,7 @@ do
                               background.height=22                       \
                               background.drawing=off                     \
                               label.drawing=off                          \
+                              label.font="LINE Seed Sans TH:Regular:17.0" \
                               script="bash $PLUGIN_DIR/space.sh"              \
                               click_script="yabai -m space --focus $sid"
 done
@@ -122,11 +123,6 @@ sketchybar --add item space_separator left                            \
 # Additional position (e.g. center) are available, see:
 # https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
 
-sketchybar --add item battery right                      \
-           --set battery script="bash $PLUGIN_DIR/battery.sh" \
-                         update_freq=7.5                  \
-           --subscribe battery system_woke
-
 sketchybar -m --add event theme_changed AppleInterfaceThemeChangedNotification
 sketchybar \
   --add item colordummy left \
@@ -134,76 +130,6 @@ sketchybar \
     drawing=off \
     script="bash $PLUGIN_DIR/colordummy.sh" \
   --subscribe colordummy theme_changed
-
-  sketchybar --add item wifi right                         \
-           --set wifi    script="bash $PLUGIN_DIR/wifi.sh"    \
-                         background.padding_right=12     \
-                         update_freq=5
-
-sketchybar                 \
---add item sound right     \
---set sound                \
-update_freq=1              \
-icon.color=0xffd08770      \
-script="bash $PLUGIN_DIR/sound.sh"
-
-sketchybar -m --add item vpn right \
-              --set vpn icon= \
-                        update_freq=5 \
-                        script="bash $PLUGIN_DIR/vpn.sh"
-
-SPOTIFY_EVENT="com.spotify.client.PlaybackStateChanged"
-POPUP_SCRIPT="sketchybar -m --set \$NAME popup.drawing=toggle"
-
-sketchybar --add       event           spotify_change $SPOTIFY_EVENT      \
-           --add       item            spotify.name left                  \
-           --set       spotify.name    click_script="$POPUP_SCRIPT"       \
-                                       popup.horizontal=on                \
-                                       popup.align=left                   \
-                                       icon.drawing=off                   \
-                                                                          \
-           --add       item            spotify.back popup.spotify.name    \
-           --set       spotify.back    icon=↩                              \
-                                       icon.padding_left=5                \
-                                       icon.padding_right=5               \
-                                       script="bash $PLUGIN_DIR/spotify.sh"    \
-                                       label.drawing=off                  \
-           --subscribe spotify.back    mouse.clicked                      \
-                                                                          \
-           --add       item            spotify.play popup.spotify.name    \
-           --set       spotify.play    icon=⏯                            \
-                                       icon.padding_left=5                \
-                                       icon.padding_right=5               \
-                                       updates=on                         \
-                                       label.drawing=off                  \
-                                       script="bash $PLUGIN_DIR/spotify.sh"    \
-           --subscribe spotify.play    mouse.clicked spotify_change       \
-                                                                          \
-           --add       item            spotify.next popup.spotify.name    \
-           --set       spotify.next    icon=↪                             \
-                                       icon.padding_left=5                \
-                                       icon.padding_right=10              \
-                                       label.drawing=off                  \
-                                       script="bash $PLUGIN_DIR/spotify.sh"    \
-           --subscribe spotify.next    mouse.clicked                      \
-                                                                          \
-           --add       item            spotify.shuffle popup.spotify.name \
-           --set       spotify.shuffle icon=☇                             \
-                                       icon.highlight_color=0xff1DB954    \
-                                       icon.padding_left=5                \
-                                       icon.padding_right=5               \
-                                       label.drawing=off                  \
-                                       script="bash $PLUGIN_DIR/spotify.sh"    \
-           --subscribe spotify.shuffle mouse.clicked                      \
-                                                                          \
-           --add       item            spotify.repeat popup.spotify.name  \
-           --set       spotify.repeat  icon=∞                             \
-                                       icon.highlight_color=0xff1DB954    \
-                                       icon.padding_left=5                \
-                                       icon.padding_right=5               \
-                                       label.drawing=off                  \
-                                       script="bash $PLUGIN_DIR/spotify.sh"    \
-           --subscribe spotify.repeat  mouse.clicked
 
 sketchybar -m --add       item               time             right                                        \
               --set       time               update_freq=2                                                 \
@@ -222,22 +148,10 @@ sketchybar -m --add       item               time             right             
                                              background.corner_radius=4                                    \
                                              script="bash $PLUGIN_DIR/date.sh"
 
-sketchybar -m --add item mic right \
-sketchybar -m --set mic update_freq=3 \
-              --set mic script="bash $PLUGIN_DIR/mic.sh" \
-              --set mic click_script="bash $PLUGIN_DIR/mic_click.sh"
-
-sketchybar -m --add       item               cpu_label right                                               \
-              --set       cpu_label          label.font="LINE Seed Sans TH:Bold:7"                                \
-                                             label=CPU                                                     \
-                                             y_offset=6                                                    \
-                                             width=0                                                       \
-                                                                                                           \
-              --add       item               cpu_percent right                                             \
-              --set       cpu_percent        label.font="LINE Seed Sans TH:Bold:12"                                  \
-                                             y_offset=-4                                                   \
-                                             update_freq=2                                                 \
-                                             script="bash $PLUGIN_DIR/cpu.sh"
+sketchybar --add item battery right                      \
+           --set battery script="bash $PLUGIN_DIR/battery.sh" \
+                         update_freq=7.5                  \
+           --subscribe battery system_woke
 
 sketchybar -m --add item packages left \
               --set packages update_freq=1 \
