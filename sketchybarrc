@@ -75,6 +75,7 @@ do
                               background.height=22                       \
                               background.drawing=off                     \
                               label.drawing=off                          \
+                              icon.font="LINE Seed Sans TH:Regular:17.0" \
                               label.font="LINE Seed Sans TH:Regular:17.0" \
                               script="bash $PLUGIN_DIR/space.sh"              \
                               click_script="yabai -m space --focus $sid"
@@ -119,7 +120,7 @@ sketchybar -m --add       item               time             right             
 sketchybar --add item battery right                      \
            --set battery script="bash $PLUGIN_DIR/battery.sh" \
                          update_freq=7.5                  \
-           --subscribe battery system_woke
+           --subscribe battery system_woke \
 
 sketchybar -m --add item packages left \
               --set packages update_freq=1 \
