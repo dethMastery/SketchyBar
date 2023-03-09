@@ -14,6 +14,7 @@ SKY="89dceb"
 SAPPHIRE="74c7ec"
 BLUE="89b4fa"
 LAVENDER="b4befe"
+DARK="2e2f2f"
 TEXT="cdd6f4"
 SUBTEXT1="bac2de"
 SUBTEXT0="a6adc8"
@@ -23,7 +24,7 @@ OVERLAY0="6c7086"
 SURFACE2="585b70"
 SURFACE1="45475a"
 SURFACE0="313244"
-BASE="1e1e2e"
+BASE="2e2f2f"
 MANTLE="181825"
 CRUST="11111b"
 
@@ -46,6 +47,7 @@ function color() {
         sapphire) color=$SAPPHIRE ;;
         blue) color=$BLUE ;;
         lavender) color=$LAVENDER ;;
+        dark) color=$DARK ;;
         text) color=$TEXT ;;
         subtext1) color=$SUBTEXT1 ;;
         subtext0) color=$SUBTEXT0 ;;
@@ -66,7 +68,7 @@ function color() {
 
 sketchybar \
     --bar \
-    color=$(color mantle 180) \
+    color=$(color dark) \
     --default \
     icon.color=$(color red) \
     label.color=$(color red) \
@@ -77,14 +79,6 @@ sketchybar \
     icon.color=$(color overlay2) \
     label.color=$(color overlay2) \
     --set battery \
-    icon.color=$(color blue) \
-    label.color=$(color blue) \
-    --set mic \
-    icon.color=$(color peach) \
-    label.color=$(color peach) \
-    --set wifi \
-    label.color=$(color teal) \
-    --set sound \
     icon.color=$(color green) \
     label.color=$(color green) \
     --set time \
@@ -92,15 +86,7 @@ sketchybar \
     label.color=$(color yellow) \
     --set date \
     background.color=$(color yellow) \
-    --set cpu_label \
-    label.color=$(color maroon) \
-    --set cpu_percent \
-    label.color=$(color maroon) \
     --set apple.logo \
     icon.color=$(color yellow) \
-    --set vpn \
-    icon.color=$(color subtext1) \
-    --set packages \
-    label.color=$(color overlay0)
 
 #Winston is sacred
