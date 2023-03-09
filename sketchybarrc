@@ -82,7 +82,7 @@ do
 done
 
 sketchybar --add item space_separator left                            \
-           --set space_separator icon=                               \
+           --set space_separator icon=⤇                               \
                                  background.padding_left=15           \
                                  background.padding_right=15          \
                                  label.drawing=off                    \
