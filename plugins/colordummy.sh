@@ -68,7 +68,7 @@ function color() {
 
 sketchybar \
     --bar \
-    color=$(color dark) \
+    color=$(color dark 200) \
     --default \
     icon.color=$(color red) \
     label.color=$(color red) \
